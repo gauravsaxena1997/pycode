@@ -2,6 +2,7 @@
 
 import time
 import commands
+import socket
 import webbrowser as wb
 
 menu = '''
@@ -14,11 +15,12 @@ menu = '''
 7.) Check owner & email and contact (if available) 
 '''
 print menu
-#def search():
-#	input_data = raw_input("Enter the data: ")
-#	data_list = input_data.strip().split()
-#	print data_list
-#	return data_list
+data_list = []
+def search():
+	input_data = raw_input("Enter the data: ")
+	data_list = input_data.strip().split()
+	print data_list
+	return data_list
 
 ch = raw_input("Enter your choice: ")
 if (ch == '1'):
@@ -32,7 +34,7 @@ elif (ch == '2'):
 	input_data = raw_input("Enter the data: ")
 	data_list = input_data.strip().split()
 	for i in data_list:
-		wb.open_new_tab('http://www.google.com/search?isch&'+i)
+		wb.open_new_tab('http://www.google.com/search?tbm=isch&q='+i)
 		time.sleep(2)
 
 elif (ch == '3'):
@@ -47,7 +49,8 @@ elif (ch == '5'):
 	wb.open('http://www.google.com')
 
 elif (ch == '6'):
-	print 'Work on progress'
+	ip = socket.gethostbyname('www.google.com')
+	print ip
 
 elif (ch == '7'):
 	print 'Work on progress'
