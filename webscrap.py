@@ -8,6 +8,4 @@ fhand = urllib.request.urlopen('http://'+url)
 for line in fhand:
 	print ( line.decode().strip() )
 
-	
-
 

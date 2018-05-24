@@ -1,9 +1,15 @@
-#! /usr/bin/python2
+#! /usr/bin/python3.4
 
 import time
 import subprocess
 import socket
 import webbrowser as wb
+import urllib.request, urllib.parse, urllib.error
+from bs4 import BeautifulSoup
+import ssl
+import whois
+import json
+
 
 menu = '''
 1.) Search data in web browser in seperate tabs
@@ -38,7 +44,21 @@ elif (ch == '2'):
 		time.sleep(2)
 
 elif (ch == '3'):
-	print ('Work on progress')
+	#Ignore SSL Certificate Errors
+	ctx = ssl.create_default_context()
+	ctx.check_hostname = False
+	ctx.verify_mode = ssl.CERT_NONE
+
+	url = input("Enter the url: ")
+
+	html = urllib.request.urlopen('http://'+url, context=ctx).read()
+
+	soup = BeautifulSoup ( html, 'html.parser' )
+
+	#Retrieve all anchor tags
+	tags = soup ( 'a' )
+	for tag in tags:
+		print ( tag.get( 'href', None ) )
 
 elif (ch == '4'):
 	time = subprocess.getoutput ('date +%H:%M:%S')
@@ -53,8 +73,16 @@ elif (ch == '6'):
 	print (ip)
 
 elif (ch == '7'):
-	print ('Work on progress')
-
+	url = input ("Enter the URL: ")
+	full_url = str (whois.whois( 'http://'+url ))
+	#print (whois)
+	info = json.loads (full_url)
+	emails = info['emails']
+	address = info['address']
+	domain_name = info['domain_name']
+	print ("Emails:" + emails)
+	print ("Address: " + address)
+	print ("Domain name: " + domain_name)
 
 
 
