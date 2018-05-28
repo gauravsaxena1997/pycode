@@ -18,57 +18,68 @@ complete_matches = list()
 all_matches = soup.find_all ( 'div', class_= 'cb-scr-wll-chvrn' )
 for details in all_matches:
 	live = details.find( 'div', class_= 'cb-text-live' )
+	complete = details.find( 'div', class_= 'cb-text-complete' )
+
 	if live is not None:
 		live_matches.append (details)
-	else:
+
+	if complete is not None:
 		complete_matches.append (details)
 
-print ('\Live Matches:')
-print ( live_matches)
+# print ('Live Matches:')
+# print ( live_matches)
 
 # print ('\nComplete Matches:\n')
 # print ( complete_matches )
+def live():
+	if ( len(live_matches) > 0):
+		for score in live_matches:
+			x = score.find ( 'div', class_= 'cb-lv-scrs-col text-black' )
+			dotTag = score.find ( 'span', class_= 'cb-series-sch-dot' )
+			dot = dotTag.text
+			score_details =  x.text.strip().split(dot)
 
-for score in live_matches:
-	x = score.find ( 'div', class_= 'cb-lv-scrs-col text-black' )
-	score_details =  x.text.strip().split()
-	print (score_details)
+			live_statusTag = score.find ( 'div', class_= 'cb-text-live' )
+			live_status = live_statusTag.text
+
+			print ( "//------------------------------------------" )
+			print ( "Team1: " + score_details[0] )
+			print ( "Team2: " + score_details[1] )
+			print ( "Live Status: " + live_status )
+			print ( "------------------------------------------//" )
+
+	else:
+		print ("No live Matches found....")
+
+def complete():
+	for score in complete_matches:
+		try:
+			exception = score.div.span.text
+		except:
+			pass
+		
+		if ( exception is not None ):
+			try:
+				y = score.find ( 'div', class_= 'cb-lv-scrs-col text-black' )
+				dotTag = score.find ( 'span', class_= 'cb-series-sch-dot' )
+				dot = dotTag.text
+				score_details =  y.text.strip().split(dot)
+
+				complete_statusTag = score.find ( 'div', class_= 'cb-text-complete' )
+				complete_status = complete_statusTag.text
+				print ( "Team1: " + score_details[0] )
+				print ( "Team2: " + score_details[1] )
+				print ( "Live Status: " + complete_status )
+				print ( "      -------------------" )
+
+			except:
+				pass
 
 
-	live_status = score.find ( 'div', class_= 'cb-text-live' )
-	print ( live_status.text )
-
-
-
-
-
-
+if __name__ == '__main__':
+	live()
+	complete()
 
 
 
 # <div class="cb-scr-wll-chvrn"> <div class="cb-lv-scrs-col text-black"><span class="text-bold">PAK</span> 350/8 (110.0 Ovs) <span class="cb-series-sch-dot">&nbsp;•&nbsp;</span> <span class="text-bold">ENG</span> 184</div> <div class="cb-lv-scrs-col cb-text-live">Day 2: Stumps - Pakistan lead by 166 runs</div> </div>
-#Bating Details
-# bat = final_live.find( 'div', class_= 'cb-hmscg-bat-txt' )
-# team = bat.find( 'div', class_= 'cb-ovr-flo' )
-# bat_team = str(team.text)
-# score = bat.find( 'div', attrs = { 'style': "display:inline-block; width:140px" } )
-# live_score = str(score.text)
-
-# #Bowling Details
-# bwl = final_live.find( 'div', class_= 'cb-hmscg-bwl-txt' )
-# team = bwl.find( 'div', class_= 'cb-ovr-flo' )
-# bwl_team = str(team.text)
-# score1 = bwl.find( 'div', attrs = { 'style': "display:inline-block; width:140px" } )
-# live_score1 = str(score1.text)
-
-# #Print Details of live matches
-# print ('\n')
-# # print ( "Go to website: " + final_live['href'] )
-# print ( '    *---[ cricbuzz live score ]---*')
-# print ( '/----------------------------------' )
-# print ( "Title: " + final_live['title'] )
-# status = final_live.find( 'div', class_= 'cb-text-live' )
-# print ( "Status: " + status.text )
-# print ( "Bating Team: " + bat_team + '\t' +"Score: " + live_score )
-# print ( "Bowling Team: " + bwl_team + '\t' +"Score: " + live_score1 )
-# print ( '----------------------------------/' )
