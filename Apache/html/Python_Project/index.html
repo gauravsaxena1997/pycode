@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>index page</title>
+</head>
+
+<style>
+.jumbotron{
+	position: relative;
+	width: 100%;
+	height: 100px;
+	background-color: blue;
+	color: white;
+	top: 0px;
+}
+#menu{
+	font-size: 150%;
+	font-family: sans-serif;
+	color: black;
+}
+.button{
+	width: 150px;
+	height: 45px;
+	background-color: blue;
+	color: white;
+}
+.button:hover{
+	border: 1px solid blue;
+	background-color: white;
+	color: blue;
+}
+</style>
+
+<body>
+
+<div class='jumbotron'> <h1 style=" padding-top:25px;padding-left:50px ">Options:</h1> </div>
+<pre id="menu">
+	1.) Search data in web browser in seperate tabs
+	2.) Search images in web browser in seperate tabs
+	3.) Search URLs of first webpage
+	4.) Current date &amp; time
+	5.) Open default web browser
+	6.) All network IP
+	7.) Check owner &amp; email and contact (if available) 
+
+</pre> 
+<hr>
+
+<h3 style="font-size=110%;color:black"> Enter an option: </h3>
+
+<form action='http://127.0.0.1/cgi-bin/Python_Project/cmd.py'>
+
+	<input name='choice'></input>
+	<input type='submit' value='Enter' class="button"></input>
+
+</form>
+</body>
+
+</html>

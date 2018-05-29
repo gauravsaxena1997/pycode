@@ -18,10 +18,10 @@ def db():
 						contact INT(11)  )""")
 
 
-		sno = input ()
-		name = input ()
-		email = input ()
-		contact= input ()
+		sno = input ("Enter sno.: ")
+		name = input ("Enter name: ")
+		email = input ("Enter email: ")
+		contact= input ("Enter contact: ")
 		# cur.execute (""" insert into details(name,email,contact) values ( 
 		# 	         'Gaurav6','sv@g.com',2143658709 ) """)
 		add_salary = ("INSERT INTO details "

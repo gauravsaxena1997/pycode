@@ -1,0 +1,5 @@
+Starting Nmap 6.40 ( http://nmap.org ) at 2018-05-28 20:27 IST
+Nmap scan report for 192.168.10.215
+Host is up.
+Nmap done: 1 IP address (1 host up) scanned in 0.08 seconds
+
