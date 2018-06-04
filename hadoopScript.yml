@@ -1,0 +1,5 @@
+---
+ - host: ansi
+   tasks:
+    - name: copy yum repos
+    - copy: src=/Hadoop_Files/yum-repo.repo dest=/etc/yum.repos.d/gurv.repo
