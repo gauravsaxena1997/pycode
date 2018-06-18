@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cluster Setup</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet"> 
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</head>
+<style type="text/css">
+html,body{
+    width: 100%;
+    height: 100%;
+}
+.jumbotron{
+    background-color:   #282630   ;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    width: 100%;
+    height: 117px;
+    font-family: 'Righteous', cursive;
+    color: white;
+}
+.img{
+    position: absolute;
+    top: 0;
+    right: 0;    
+}
+h1{
+    padding: 29px;
+}
+.card{
+    position: relative;
+    top: -35px;
+    width: 1030px;
+    height: 475px;
+    border:none;
+    padding: 25px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+    transition: 0.4s;
+}
+.card:hover {
+    box-shadow: 0 7px 7px rgba(0,0,0,0.7);
+}
+.comment{
+    font-size: 80%;
+    color: grey;
+}
+</style>
+<body>
+
+<div class="jumbotron">
+    <img class="img" src="img/hadoop.jpg">
+    <h1>HDFS Cluster Setup</h1>
+</div>
+<center>
+<div class="card">
+<form action="http://127.0.0.1/cgi-bin/hadoop/hadoopv2.py">
+    
+    <div class="form-group row align-items-center">
+      <label class="control-label col-sm-4" for="email">Number of nodes:</label>
+      <div class="col-sm-4">
+        <input type="nodes" class="form-control" id="nodes" placeholder="No. of nodes in the cluster" name="nodes" autofocus>
+      </div>
+      <div class="col-sm-4">
+      </div>
+    </div>
+
+    <div class="form-group row align-items-center">
+      <label class="control-label col-sm-4" for="email">Memory (RAM):</label>
+      <div class="col-sm-4">
+        <input class="form-control" type="number" name="ram" min="1" max="512">
+      </div>
+      <div class="col-sm-4">
+        <p class="comment"> Up to 512 MB available </p>  
+      </div>
+    </div>
+
+    <div class="form-group row align-items-center">
+      <label class="control-label col-sm-4" for="email">CPUs: </label>
+      <div class="col-sm-4">
+        <input class="form-control" type="number" name="cpu" min="1" max="4">
+      </div>
+      <div class="col-sm-4">
+        <p class="comment"> Up to 4 available </p>
+      </div>
+    </div>
+
+    <div class="form-group row align-items-center ">
+    <label class="control-label col-sm-4" for="email">Service type:</label>
+      <div class="col-sm-8">
+        <select name="service_type" class="form-control custom-select">
+          <option selected>Choose One...</option>
+          <option value="nm">Namenode and other Datanodes</option>
+          <option value="nrdn">Namenode and Resourcemanager on one machine &amp; Datanodes and Nodemanager on others</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    </div>
+
+    <input type="submit" value="Submit">   
+
+</form>
+</div>
+</center>   
+</body>
+</html>
+
+
+
+
+

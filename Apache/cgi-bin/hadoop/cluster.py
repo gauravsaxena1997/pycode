@@ -8,8 +8,8 @@ import subprocess as sb
 cgitb.enable()
 
 #header information
-print ("Content-type:text/html")
-print ("")
+print ("Content-type:text/html") 
+print ("") 
 
 web_data = cgi.FieldStorage()
 dn =  web_data.getvalue('no')
@@ -23,8 +23,8 @@ for i in range( 1, int(dn)+1 ):
 	print ( sb.getoutput ( create_vm ) )
 	print ('</br>')
 
-	#running virtual machine
-	# print ('Installing virtual machine...')
-	# run_vm = 'sudo virt-install --ram 512 --vcpu 1 --disk path=/var/lib/libvirt/images/gurvdn'+str(i)+'.qcow2 --import --name datanode'+str(i)+' --noautoconsole'
-	# print ( sb.getoutput ( run_vm ) )
+	running virtual machine
+	print ('Installing virtual machine...')
+	run_vm = 'sudo virt-install --ram 512 --vcpu 1 --disk path=/var/lib/libvirt/images/gurvdn'+str(i)+'.qcow2 --import --name datanode'+str(i)+' --noautoconsole'
+	print ( sb.getoutput ( run_vm ) )
 

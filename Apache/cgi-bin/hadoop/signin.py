@@ -19,7 +19,6 @@ conn = pysql.connect(user='root',password='m487',database='hadoop',host='localho
 
 
 if ( conn.is_connected() ):
-	print ('Database connected successfully...')
 	cur = conn.cursor()
 		
 	query =  ("SELECT * FROM signup "
@@ -29,8 +28,10 @@ if ( conn.is_connected() ):
 		fetch = cur.fetchall()
 
 		if ( len(fetch)>0 ):
-			print("<meta http-equiv='refresh' content='0;http://127.0.0.1/hadoop/cluster.html'>")
+			print("<meta http-equiv='refresh' content='0;http://127.0.0.1/hadoop/version.html'>")
+		else:
+			print("<meta http-equiv='refresh' content='0;http://127.0.0.1/hadoop/invalid.html'>")
  
 	except:
-		print('</br>')
-		print("oops..!!")
+		conn.rollback()
+		print("oops..!!")		

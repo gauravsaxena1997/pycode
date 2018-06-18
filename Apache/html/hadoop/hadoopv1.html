@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cluster Setup</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Jua|Lobster" rel="stylesheet"> 
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</head>
+<style type="text/css">
+.card-container.card {
+    max-width: 750px;
+    padding: 50px 50px;
+}
+
+.card {
+    background-color: #F7F7F7;
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+</style>
+<body>
+
+<div class="container">
+    <div class="card card-container">
+        <img id="profile-img" class="profile-img-card" src="img/adhoc.jpg" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <form  action="http://127.0.0.1/cgi-bin/hadoop/signin.py" class="form-signin" method="GET">
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+            <div id="remember" class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+        </form><!-- /form -->
+
+        <a href="#" class="forgot-password">
+            Forgot the password?
+        </a>
+    </div><!-- /card-container -->
+</div><!-- /container -->
+
+
+
+</body>
+</html>
