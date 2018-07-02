@@ -1,10 +1,11 @@
 import matplotlib.pyplot as plt
-import numpy as np
-import pandas
-import urllib
 import matplotlib.dates as mdates
 import matplotlib.ticker as mticker
 from mpl_finance import candlestick_ohlc
+
+import numpy as np
+import urllib
+import datetime as dt
 
 
 def bytespdate2num(fmt, encoding='utf-8'):
@@ -14,51 +15,50 @@ def bytespdate2num(fmt, encoding='utf-8'):
         return strconverter(s)
     return bytesconverter
     
-#Define subplot
-fig = plt.figure()
-ax1 = plt.subplot2grid ((1,1),(0,0))
 
-stock_price_url = 'https://pythonprogramming.net/yahoo_finance_replacement'
-source_code = urllib.request.urlopen(stock_price_url).read().decode()
-stock_data = []
-split_source = source_code.split('\n')
-for line in split_source[1:]:
-    split_line = line.split(',')
-    stock_data.append(line)
+def graph_data(stock):
 
-date, closep, highp, lowp, openp, adj_closep, volume = np.loadtxt(stock_data,delimiter=',',unpack=True,converters={0: bytespdate2num('%Y-%m-%d')})
+    fig = plt.figure()
+    ax1 = plt.subplot2grid((1,1), (0,0))
+    
+    stock_price_url = 'https://pythonprogramming.net/yahoo_finance_replacement'
+    source_code = urllib.request.urlopen(stock_price_url).read().decode()
+    stock_data = []
+    split_source = source_code.split('\n')
+    for line in split_source[1:]:
+        split_line = line.split(',')
+        stock_data.append(line)
+    
+    date, closep, highp, lowp, openp, adj_closep, volume = np.loadtxt(stock_data,
+                                                          delimiter=',',
+                                                          unpack=True,
+                                                          converters={0: bytespdate2num('%Y-%m-%d')})
 
-x = 0
-y = len(date)
-ohlc = []
+    x = 0
+    y = len(date)
+    ohlc = []
 
-while x < y:
-    append_me = date[x], openp[x], highp[x], lowp[x], closep[x], volume[x]
-    ohlc.append(append_me)
-    x+=1
+    while x < y:
+        append_me = date[x], openp[x], highp[x], lowp[x], closep[x], volume[x]
+        ohlc.append(append_me)
+        x+=1
 
-candlestick_ohlc(ax1, ohlc)
+    candlestick_ohlc(ax1, ohlc, width=0.4, colorup='#77d879', colordown='#db3f3f')
 
-plt.xlabel('Date')
-plt.ylabel('Price')
-plt.title('Interesting Graph\nCheck it out')
-plt.legend()
-plt.subplots_adjust (left=0.12, bottom=0.21, right=0.90, top=0.90, wspace=0.20, hspace=0.20)
-plt.show()
+    for label in ax1.xaxis.get_ticklabels():
+        label.set_rotation(45)
 
+    ax1.xaxis.set_major_formatter(mdates.DateFormatter('%d/%m/%y'))
+    ax1.xaxis.set_major_locator(mticker.MaxNLocator(7))
+    ax1.grid(True)
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    plt.xlabel('Date')
+    plt.ylabel('Price')
+    plt.title(stock)
+    plt.legend()
+    plt.subplots_adjust(left=0.09, bottom=0.20, right=0.94, top=0.90, wspace=0.2, hspace=0)
+    plt.show()
 
 
+graph_data('EBAY')
