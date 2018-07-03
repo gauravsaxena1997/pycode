@@ -5,7 +5,7 @@ from matplotlib import style
 
 style.use('ggplot')
 
-start = datetime.datetime(2016, 1, 1)
+start = datetime.datetime(2018, 1, 1)
 end = datetime.datetime.now()
 
 print (start)
@@ -22,7 +22,7 @@ df.set_index("Date",inplace=True)
 
 df = df.drop("Symbol",axis=1)
 
-print(df.head())
+print(df)
 
 df['High'].plot()
 plt.show()
