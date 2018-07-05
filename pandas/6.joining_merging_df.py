@@ -1,5 +1,5 @@
 import pandas as pd
-
+'''
 df1 = pd.DataFrame({'HPI':[80,85,88,85],
                     'Int_rate':[2, 3, 2, 2],
                     'US_GDP_Thousands':[50, 55, 65, 55]},
@@ -14,4 +14,45 @@ df3 = pd.DataFrame({'HPI':[80,85,88,85],
                     'Unemployment':[7, 8, 9, 6],
                     'Low_tier_HPI':[50, 52, 50, 53]},
                    index = [2001, 2002, 2003, 2004])
+
+
+# merge : when index does not matter
+# print (pd.merge(df1,df2, on = ['HPI','Int_rate']))
+
+df1.set_index ('HPI', inplace=True)
+df3.set_index ('HPI', inplace=True)
+
+# join: when index does matter
+joined = df1.join (df3)
+print (joined)
+'''
+df1 = pd.DataFrame({
+                    'Int_rate':[2, 3, 2, 2],
+                    'US_GDP_Thousands':[50, 55, 65, 55],
+                    'Year':[2001, 2002, 2003, 2004]
+                    })
+
+df3 = pd.DataFrame({
+                    'Unemployment':[7, 8, 9, 6],
+                    'Low_tier_HPI':[50, 52, 50, 53],
+                    'Year':[2001, 2003, 2004, 2005]})
+
+
+left = pd.merge(df1,df3, on='Year' , how='left')
+left.set_index ('Year', inplace=True)
+print(left)
+
+right = pd.merge(df1,df3, on='Year' , how='right')
+right.set_index ('Year', inplace=True)
+print(right)
+
+# outer: union of the keys
+outer = pd.merge(df1,df3, on='Year' , how='outer')
+outer.set_index ('Year', inplace=True)
+print(outer)
+
+# inner: intersect of the keys
+inner = pd.merge(df1,df3, on='Year' , how='inner')
+inner.set_index ('Year', inplace=True)
+print(inner)
 
