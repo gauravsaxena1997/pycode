@@ -39,4 +39,4 @@ def update_gragh (input_data):
 
 
 if ( __name__ == '__main__') :
-    app.run_server( host='192.168.43.89', port=8020, debug=True) 
+    app.run_server(debug=True) 
