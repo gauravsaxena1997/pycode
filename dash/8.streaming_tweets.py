@@ -20,8 +20,8 @@ def create_table():
 		print(str(e))
 create_table()
 
-Consumer_Key = 'HxenUwwhFIcVBsbRNKvb1fekK' 
-Consumer_Secret = 'hfFCvCOMcKCfJJ0n3emVWTDemkIr6rFMo2DhhR4FtcrLsYXFcN' 
+Consumer_Key = 'hqzcXRnqj5AoYr4MvTF9dbeYU' 
+Consumer_Secret = 'jlTXxVjt3Nc0tA9fDtkwpIwoFXjXzeF4AQtGEDgni8nCy2mNES' 
 Access_Token = '973076672231587840-Dh6SZrWFo0HcSAC82nNdXieL8ZKwF3R'
 Access_Token_Secret = 'pVaaWWUYZPrmOatlgAmnQTb26o1WXaQKHBJsOTZzZ94ax'
 
@@ -54,7 +54,7 @@ while True:
 		auth = OAuthHandler (Consumer_Key,Consumer_Secret)
 		auth.set_access_token (Access_Token,Access_Token_Secret)
 		twitterStream = Stream(auth, listener())
-		twitterStream.filter(track=["a","e","o","i","u"])
+		twitterStream.filter(track=["modi"])
 	except Exception as e:
 		print(str(e))
 		time.sleep(5)

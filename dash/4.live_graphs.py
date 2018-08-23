@@ -44,7 +44,7 @@ def update_graph():
 												yaxis = dict(range=[min(Y),max(Y)]  ))  }
 
 if ( __name__ == '__main__') :
-    app.run_server( host='192.168.43.89', port=8020, debug=True) 
+    app.run_server( port=8020, debug=True) 
 
 
 
